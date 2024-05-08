@@ -1,4 +1,5 @@
-import "./style.css"
+import { useState } from "react";
+import "./style.css";
 
 /*
 Zadání 1: Pomocí události `change` na vstupním políčku a vlastnosti `event.target.value` ukládej
@@ -9,16 +10,24 @@ Zadání 4. Poslední odstavec zobraz pouze v případě, že je text kratší n
 */
 
 export const ZaverecnyBonus1 = () => {
+  const [napsano, setNapsano] = useState("");
+  const [pocetZnaku, setPocetZnaku] = useState(0);
+
+  const zmenaTextu = (event) => {
+    setNapsano(event.target.value);
+    setPocetZnaku(event.target.value.length);
+  };
+
   return (
-    <div className='formular'>
+    <div className="formular">
       <label>
-        Napiš něco: <input />
+        Napiš něco: <input onChange={zmenaTextu} />
       </label>
       <p>
-        Do políčka výše uživatel napsal: <b>@TODO</b>
+        Do políčka výše uživatel napsal: <b>{napsano}</b>
       </p>
-      <p>Počet znaků: 0</p>
-      <p>Jako heslo by text neobstál.</p>
+      <p>Počet znaků: {pocetZnaku}</p>
+      {pocetZnaku < 8 ? <p>Jako heslo by text neobstál.</p> : null}
     </div>
-  )
-}
+  );
+};
