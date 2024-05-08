@@ -4,18 +4,35 @@ Zadání 2: Zařiďte, aby jednotlivá tlačítka měnila stav. +1 přičítalo 
   vynulovat nastavovalo na nulu apod.
 */
 
+import { useState } from "react";
+
 const Pocitadlo = () => {
-  const cislo = 0;
+  const [cislo, setCislo] = useState(0);
+  const prictiPet = () => {
+    setCislo(cislo + 5);
+  };
+  const prictiJedna = () => {
+    setCislo(cislo + 1);
+  };
+  const odectiJedna = () => {
+    setCislo(cislo - 1);
+  };
+  const odectiPet = () => {
+    setCislo(cislo - 5);
+  };
+  const vynuluj = () => {
+    setCislo(0);
+  };
 
   return (
     <>
       <h3>Počítadlo: {cislo}</h3>
       <div>
-        <button>-5</button>
-        <button>-1</button>
-        <button>vynulovat</button>
-        <button>+1</button>
-        <button>+5</button>
+        <button onClick={odectiPet}>-5</button>
+        <button onClick={odectiJedna}>-1</button>
+        <button onClick={vynuluj}>vynulovat</button>
+        <button onClick={prictiJedna}>+1</button>
+        <button onClick={prictiPet}>+5</button>
       </div>
     </>
   );

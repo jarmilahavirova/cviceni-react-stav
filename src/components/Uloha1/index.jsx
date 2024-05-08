@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import offUrl from './off.svg';
-import onUrl from './on.svg';
-import './zarovka.css';
+import { useState } from "react";
+import offUrl from "./off.svg";
+import onUrl from "./on.svg";
+import "./zarovka.css";
 
 /*
 Zadání 1: Po kliku na tlačítko `zapnout` zavolejte `setJeZapnuta(true)`.
@@ -9,7 +9,13 @@ Zadání 2: Po kliku na tlačítko `vypnout` zhasněte.
 */
 
 export const Uloha1 = () => {
-  const [jeZapnuta, setJeZapnuta] = useState(false)
+  const [jeZapnuta, setJeZapnuta] = useState(false);
+  const zapinani = () => {
+    setJeZapnuta(true);
+  };
+  const vypinani = () => {
+    setJeZapnuta(false);
+  };
 
   return (
     <div className="zarovka">
@@ -17,14 +23,22 @@ export const Uloha1 = () => {
         src={jeZapnuta ? onUrl : offUrl}
         width={80}
         height={80}
-        alt={jeZapnuta ? 'Zapnutá žárovka' : 'Vypnutá žárovka'}
+        alt={jeZapnuta ? "Zapnutá žárovka" : "Vypnutá žárovka"}
         className="zarovka__ikona"
       />
       <div className="zarovka__tlacitka">
-        <button className="zarovka__tlacitko" disabled={jeZapnuta}>
+        <button
+          className="zarovka__tlacitko"
+          disabled={jeZapnuta}
+          onClick={zapinani}
+        >
           zapnout
         </button>
-        <button className="zarovka__tlacitko" disabled={!jeZapnuta}>
+        <button
+          className="zarovka__tlacitko"
+          disabled={!jeZapnuta}
+          onClick={vypinani}
+        >
           vypnout
         </button>
       </div>
