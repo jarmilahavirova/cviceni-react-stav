@@ -15,7 +15,7 @@ const Ukol = ({ nazev }) => {
   const [splneno, setSplneno] = useState(false);
 
   return (
-    <li className="ukol">
+    <li className={splneno ? "ukol ukol--splnen" : "ukol"}>
       <span className="ukol__nazev">{nazev}</span>
       {splneno ? null : (
         <button
